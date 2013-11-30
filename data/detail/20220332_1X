@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "course": {
+        "location": "i4x://TsinghuaX/20220332_1X/sequential/aaeed022de854f619a5663a26bf0a8a8"
+        "display_name": "电路原理",
+        "start": "2013-11-12",
+        "children": [
+            {
+                "location": "i4x://TsinghuaX/20220332_1X/sequential/aaeed022de854f619a5663a26bf0a8a8/chapter/chapter1",
+                "display_name": "Chapter 1",
+                "start": "2013-11-12",
+                "children": [
+                    {
+                        "location": "i4x://TsinghuaX/20220332_1X/sequential/aaeed022de854f619a5663a26bf0a8a8/chapter/chapter1/sequential/seq1",
+                        "display_name": "First Sequence",
+                        "start": "2013-11-12",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "course": {
+        "location": "i4x://TsinghuaX/30240184_1X/sequential/5ec3aeb4c7d74bf687b0b864befd42a9"
+        "display_name": "数据结构",
+        "start": "2013-11-12",
+        "children": [
+            {
+                "location": "i4x://TsinghuaX/30240184_1X/sequential/5ec3aeb4c7d74bf687b0b864befd42a9/chapter/chapter1",
+                "display_name": "Chapter 1",
+                "start": "2013-11-12",
+                "children": [
+                    {
+                        "location": "i4x://TsinghuaX/30240184_1X/sequential/5ec3aeb4c7d74bf687b0b864befd42a9/chapter/chapter1/sequential/seq1",
+                        "display_name": "First Sequence",
+                        "start": "2013-11-12",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}

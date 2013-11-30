@@ -1,0 +1,37 @@
+{
+    "status": "success",
+    "course_videos": [
+        {
+            "parent_location": "i4x://TsinghuaX/80000901_1X/video/0a5d5880e7a54a018f3c5fe367931687",
+            "display_name": "第一章",
+            "transcript_url": "https://www.xuetangx.com/c4x/TsinghuaX/80000901_1X/asset/1-1-CHN_.srt",
+            "sources": {
+                "youtube": {
+                    "1.0": "youtubeid",
+                    "0.75": "youtubeid",
+                    "1.25": "youtubeid",
+                    "2.0": "youtubeid"
+                },
+                "alt": { [
+                    "http://cm12.c110.play.bokecc.com/flvs/ca/QxtYA/u11qZbHcHn-10.mp4",
+                ]}
+            }
+        },
+        {
+            "parent_location": "i4x://TsinghuaX/80000901_1X/video/6c632a9f758f4b808589c589e828fd75",
+            "display_name": "第二章",
+            "transcript_url": "https://www.xuetangx.com/c4x/TsinghuaX/80000901_1X/asset/1-4-CHN.srt",
+            "sources": {
+                "youtube": {
+                    "1.0": "youtubeid",
+                    "0.75": "youtubeid",
+                    "1.25": "youtubeid",
+                    "2.0": "youtubeid"
+                },
+                "alt": { [
+                    "http://cm12.c120.play.bokecc.com/flvs/ca/QxtYA/uLwWyvKL6P-10.mp4",
+                ]}
+            }
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "course": {
+        "location": "i4x://sequence_i4x-TsinghuaX-80000901_1X-sequential-6c5ba8b5a721406f8dc8601641c5c24d"
+        "display_name": "中国建筑史",
+        "start": "2013-11-12",
+        "children": [
+            {
+                "location": "i4x://sequence_i4x-TsinghuaX-80000901_1X-sequential-6c5ba8b5a721406f8dc8601641c5c24d/chapter/chapter1",
+                "display_name": "Chapter 1",
+                "start": "2013-11-12",
+                "children": [
+                    {
+                        "location": "i4x://sequence_i4x-TsinghuaX-80000901_1X-sequential-6c5ba8b5a721406f8dc8601641c5c24d/chapter/chapter1/sequential/seq1",
+                        "display_name": "First Sequence",
+                        "start": "2013-11-12",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}
