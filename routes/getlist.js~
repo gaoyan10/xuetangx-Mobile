@@ -2,8 +2,8 @@
 * get course list
 */
 var respon = function(res, str, code){
-	var mes = JSON.stringify(str);
-	res.writeHead(code,{'Content-Length':mes.length,  'Content-Type':'application/json'});
+	//var mes = JSON.stringify(str);
+	res.writeHead(code,{'Content-Type':'text/plain'});
 	if(str.length > 0){
 		res.write(str);
 	}
@@ -12,36 +12,43 @@ var respon = function(res, str, code){
 var fs = require('fs');
 exports.getallcourse = function(req, res) {
 	var key = req.headers['x-edx-api-key'];
-	var access = req.headers['Authorization'];
+	var access = req.headers['authorization'];
 	if (key != '1234567890' || access.length < 10){
-		res.writeHead(403, {"Content-Type":"application/json"});
+		//res.writeHead(403, {"Content-Type":"application/json"});
 		//res.send("heh");
-		res.end();
-		return;
+		//res.end();
+		//return;
 	}
 	fs.readFile('coursedata', 'utf-8', function(err,data) {
 		var courses = data.split(/\n/);
 		var response = "";
+		var mark = 1;
 		for(var i = courses.length; i --;){
-			fs.readFile('data/' + course, 'utf-8', function(err, data) {
+			if(courses[i].length > 0){
+			console.log(courses[i]);
+			fs.readFile('data/' + courses[i], 'utf-8', function(err, data) {
 				if ( response.length > 0){
 					response = response + ',';
 				}
+				console.log(i);
+				console.log(data);
+				mark ++;
+				console.log(mark);
 				response = response + '{' + data + '}';
-				if(i == 0) {
+				if(mark == courses.length) {
 					response = '[' + response + ']';
 					var back = '{"status" : "success",'
 						 + '"courses" :' +  response + '}';
 					respon(res, back, 200);
 				}
-			});
+			});}
 		}
 	});
 };
 
 exports.getenrollcourse = function(req, res) {
 	var key = req.headers['x-edx-api-key'];
-	var access = req.headers['Authorization'];
+	var access = req.headers['authorization'];
 	if (key != '1234567890' || access.length < 10){
 		res.writeHead(403, {"Content-Type":"application/json"});
 		//res.send("heh");
@@ -50,18 +57,19 @@ exports.getenrollcourse = function(req, res) {
 	}
 	fs.readFile('data/' + access, 'utf-8', function(err,data) {
 		var courses = data.split(/\n/);
+		var mark = 1;
 		var response = "";
 		for(var i = courses.length; i --;){
-			fs.readFile('data/' + course, 'utf-8', function(err, data) {
+			if (courses[i].length > 0)
+			fs.readFile('data/' + courses[i], 'utf-8', function(err, data) {
 				if ( response.length > 0){
 					response = response + ',';
 				}
+				mark ++;
 				response = response + '{' + data + '}';
-				if(i == 0) {
+				if(mark == courses.length) {
 					response = '[' + response + ']';
-					var back = {
-						enrollments : response;
-					};
+					var back = '{ "enrollments" : '+ response +'}';
 					respon(res, back, 200);
 				}
 			});

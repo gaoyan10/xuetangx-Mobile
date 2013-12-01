@@ -2,19 +2,21 @@
 * Post login
 */
 var respon = function(res, str, code){
-	var mes = JSON.stringify(str);
-	res.writeHead(code,{'Content-Length':mes.length,  'Content-Type':'application/json'});
+	res.writeHead(code,{'Content-Length':str.length,  'Content-Type':'application/json'});
 	if(str.length > 0){
-		res.write(JSON.stringify(str));
+		res.write(str);
 	}
 	res.end();
 };
 var fs = require('fs');
 exports.login = function(req, res) {
+	console.log(req.body+'');
 	var key = req.headers['x-edx-api-key'];
 	var access = req.headers['Authorization'];
-	if (key != '1234567890' || access.length < 10){
-		res.writeHead(403, {"Content-Type":"application/json"});
+	console.log(access);
+	if (key != '1234567890'){
+		console.log(access);
+		res.writeHead(403, {"Content-Type":"text/plain"});
 		//res.send("heh");
 		res.end();
 		return;
@@ -32,14 +34,12 @@ exports.login = function(req, res) {
 			var users = data.split(/\n/);
 			for(var i = users.length; i -- ;){
 				var item = users[i];
-				var items = items.split(/\t/);
+				var items = item.split(/\t/);
 				if (items[0] == username && items[3] == password) {
-					var back = {
-						access_token: "09876543231" + items[1], 
-						scope: "read", 
-						expires_in: 86399, 
-						refresh_token: "0987654321" + items[1]  + "refresh"
-					};
+					console.log(username);
+					var back = '{"access_token": "0987654321' + items[1] +'",' 
+						 + '"scope": "read", "expires_in": 86399,'+ 
+						'"refresh_token": "0987654321' + items[1]  + 'refresh"}';
 					respon(res, back, 200);
 					return;
 				}

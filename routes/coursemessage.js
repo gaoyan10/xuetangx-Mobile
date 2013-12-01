@@ -2,7 +2,7 @@
 * get course message
 */
 var fs = require('fs');
-var getCourseVideo = function(req, res) {
+var getCourseVideo = function(req, res, access, coursename) {
 	fs.readFile('data/'+access, 'utf-8', function(err,data){
 		if(err){
 			res.writeHead(500);
@@ -33,15 +33,19 @@ var getCourseVideo = function(req, res) {
 	});
 };
 exports.getCourseMessage = function(req, res) {
-	var key = req.headers['X-edx-api-key'];
-	var access = req.headers['Authorization'];
+	var key = req.headers['x-edx-api-key'];
+	var access = req.headers['authorization'];
 	if(key != '1234567890' || access .length < 10){
+		console.log(access);
+		console.log(key);
 		res.writeHead(403, {"Content-Type":"application/json"});
 		res.end();
 		return;
 	}
 	var coursename = req.params.coursename;
 	var type = req.query.type;
+	console.log(coursename);
+	console.log(type);
 	if(type == undefined){
 	fs.readFile('data/'+access, 'utf-8', function(err,data){
 		if(err){
@@ -71,7 +75,7 @@ exports.getCourseMessage = function(req, res) {
 	}
 	else{
 		if(type == 'video'){
-			getCourseVideo(req, res);
+			getCourseVideo(req, res,access,coursename);
 		}else{
 			res.writeHead(400);
 			res.write('server error');

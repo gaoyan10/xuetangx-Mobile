@@ -1,12 +1,18 @@
 /*
 * Post response.
+email username fullname password
 */
 function Isyx(yx){
  var reyx= /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
  return(reyx.test(yx));
 }
 var respon = function(res, str, code){
+	var mes = JSON.stringify(str);
+	res.writeHead(code,{'Content-Length':mes.length,  'Content-Type':'application/json'});
+	console.log(JSON.stringify(str));
 	res.write(JSON.stringify(str));
+	console.log(JSON.stringify(str));
+	//res.send(300, JSON.stringify(str));
 	res.end();
 };
 var fs = require('fs');
@@ -74,13 +80,13 @@ exports.register = function(req, res) {
 				return ;
 			}
 		}
-		//res.writeHead(200, {"Content-Type":"application/json"});
+		res.writeHead(200, {"Content-Type":"application/json"});
 		res.end();
 		var newItem = email + '\t' + username + '\t' + full_name + '\t' + password + '\n';
 		fs.appendFile('userdata', newItem, 'utf-8', function(err){
 			console.log(err);
 		});
-		fs.writeFile('0987654321'+username,"", 'utf-8', function(err){
+		fs.writeFile('data/0987654321'+username,"", 'utf-8', function(err){
 			if(err){
 				console.log(err);
 			}
