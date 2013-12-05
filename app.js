@@ -68,9 +68,9 @@ app.post('/test',function(req, res){
 	
 });
 app.post('/edx-api/signup/v1/register', register.register);
-app.post('edx-api/auth/v1/oauth2/access_token', login.login);
-app.post('/edx-api/enrollment/v1/:username', enroll.enrollment);
-app.delete('/edx-api/enrollment/v1/:username', enroll.unenroll);
+app.post('/edx-api/auth/v1/oauth2/access_token', login.login);
+app.post('/edx-api/enrollments/v1/:username', enroll.enrollment);
+app.delete('/edx-api/enrollments/v1/:username', enroll.unenroll);
 app.get('/edx-api/courseware/v1',list.getallcourse);
 app.get('/edx-api/enrollments/v1/',list.getenrollcourse);
 app.get('/edx-api/courseware/v1/:coursename',course.getCourseMessage);
